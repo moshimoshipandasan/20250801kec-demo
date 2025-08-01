@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大阪たこ焼きオセロ - めっちゃうまいで！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐙 大阪たこ焼きオセロ 🐙</h1>
+            <p class="subtitle">ほな、ひっくり返してこか！</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="score-board">
+                <div class="player-score">
+                    <span class="player-name">プレイヤー1</span>
+                    <span class="score" id="score-black">2</span>
+                    <span class="takoyaki">🍙</span>
+                </div>
+                <div class="current-turn" id="current-turn">あんたの番やで！</div>
+                <div class="player-score">
+                    <span class="player-name">プレイヤー2</span>
+                    <span class="score" id="score-white">2</span>
+                    <span class="takoyaki">🥟</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-board" id="game-board">
+            <!-- 8x8のゲームボードがJavaScriptで生成されます -->
+        </div>
+        
+        <div class="controls">
+            <button class="btn-osaka" id="reset-btn">もっかいやろか！</button>
+            <button class="btn-osaka" id="sound-toggle">音オン/オフ</button>
+        </div>
+        
+        <div class="message-area" id="message-area">
+            <p>ほな、始めよか！黒たこ焼きから先攻やで〜</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

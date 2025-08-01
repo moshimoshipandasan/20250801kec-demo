@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #d35400;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #e74c3c;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.game-info {
+    margin-bottom: 20px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f4e6;
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid #d35400;
+}
+
+.player-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-name {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.score {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e74c3c;
+    min-width: 30px;
+    text-align: center;
+}
+
+.takoyaki {
+    font-size: 1.5em;
+}
+
+.current-turn {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #d35400;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+    background: #8b4513;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 500px;
+    aspect-ratio: 1;
+}
+
+.cell {
+    background: #daa520;
+    border: 2px solid #8b4513;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+}
+
+.cell.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.takoyaki-piece {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.takoyaki-piece.black {
+    background: radial-gradient(circle at 30% 30%, #654321, #3e2723);
+}
+
+.takoyaki-piece.white {
+    background: radial-gradient(circle at 30% 30%, #ffd4a3, #d2691e);
+}
+
+.takoyaki-piece.flipping {
+    animation: flip 0.8s ease-in-out;
+}
+
+@keyframes flip {
+    0% { transform: rotateY(0deg) scale(1); }
+    50% { transform: rotateY(90deg) scale(1.2); }
+    100% { transform: rotateY(180deg) scale(1); }
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.btn-osaka {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-osaka:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-osaka:active {
+    transform: translateY(0);
+}
+
+.message-area {
+    text-align: center;
+    padding: 15px;
+    background: #fff3cd;
+    border-radius: 10px;
+    border: 2px solid #ffeaa7;
+}
+
+.message-area p {
+    color: #856404;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.valid-move {
+    position: relative;
+}
+
+.valid-move::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    background: rgba(76, 175, 80, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-valid 1s infinite;
+}
+
+@keyframes pulse-valid {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.5; }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    .game-board {
+        gap: 2px;
+        padding: 5px;
+    }
+    
+    .takoyaki-piece {
+        font-size: 1.5em;
+    }
+    
+    .btn-osaka {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    
+    .score-board {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .current-turn {
+        order: -1;
+    }
+}
